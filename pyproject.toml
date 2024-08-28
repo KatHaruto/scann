@@ -1,0 +1,65 @@
+[project]
+name = "scann"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "KatHaruto", email = "haru10.jm@gmail.com" }
+]
+dependencies = [
+    "numpy>=1.26.4",
+    "scikit-learn>=1.5.1",
+    "plotly>=5.23.0",
+    "pandas>=2.2.2",
+    "scipy>=1.13.1",
+    "requests>=2.32.3",
+    "h5py>=3.11.0",
+    "tqdm>=4.66.5",
+]
+readme = "README.md"
+requires-python = ">= 3.8,<3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.4.2",
+    "mypy>=1.10.0",
+    "types-tqdm>=4.66.0.20240417",
+]
+
+[tool.ruff]
+line-length = 119
+lint.select = ["ALL"]
+lint.ignore = [
+    "D",
+    "PLR0913",
+    "ANN002",
+    "ANN003",
+    "ANN204",
+    "N803",
+    "ANN101", # missing-type-self
+    "ANN102", # missing-type-cls
+    "TD002",  # Missing author in TODO
+    "TD003",  # Missing issue link on the line following this TODO
+    "TRY003",
+    "EM101",
+    "FIX002", # Consider resolving the issue before deploying the code.
+    "T201", # allow print
+    "PT018",
+    "PLR2004",
+    "S101"
+]
+target-version = "py39"
+
+[[tool.mypy.overrides]]
+module = ['h5py']
+ignore_missing_imports = true
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scann_impl"]

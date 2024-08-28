@@ -1,0 +1,10 @@
+{
+  "ruff.format.args": ["--config=pyproject.toml"],
+  "ruff.fixAll": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.path": ["./.venv/bin/mypy"],
+  "mypy-type-checker.args": ["--config=pyproject.toml"]
+}
